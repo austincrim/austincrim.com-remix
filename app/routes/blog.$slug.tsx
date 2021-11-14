@@ -11,12 +11,19 @@ export let links: LinksFunction = () => {
 
 export let loader: LoaderFunction = async ({ params }) => {
   let post = await getPostBySlug(params.slug!)
-  return json(post)
+  return json(post, { headers: { 'Cache-Control': 's-maxage: 300' } })
+}
+
+export function headers({ loaderHeaders }) {
+  return {
+    'Cache-Control': loaderHeaders.get('Cache-Control')
+  }
 }
 
 export default function Post() {
   let post = useLoaderData<Post & { mdxBundle: { code: string } }>()
   let Component = getMDXComponent(post.mdxBundle.code)
+
   return (
     <>
       {/* <Head>

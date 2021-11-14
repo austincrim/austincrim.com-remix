@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from './Nav'
 import ThemePicker from './ThemePicker'
 
-export default function Layout({ children }: { children: React.ReactChildren }) {
+export default function Layout({ children }) {
   return (
     <>
       <ThemePicker />
