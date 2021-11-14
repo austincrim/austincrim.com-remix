@@ -1,5 +1,5 @@
 import type { LinksFunction, LoaderFunction } from 'remix'
-import { Meta, Links, Scripts, useLoaderData, LiveReload, useCatch } from 'remix'
+import { Meta, Links, LiveReload, useCatch } from 'remix'
 import { Outlet } from 'react-router-dom'
 
 import stylesUrl from './styles/tailwind.css'
@@ -16,7 +16,8 @@ function Document({ children, title }: { children: React.ReactNode; title?: stri
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" type="image/png" />
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />

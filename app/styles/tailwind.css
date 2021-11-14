@@ -1139,8 +1139,8 @@ video {
 }
 
 .prose-theme pre {
-  color: var(--color-text-muted);
-  background-color: rgb(var(--color-off-base));
+  color: hsl(0, 50%, 10%);
+  background-color: hsl(0, 0%, 98%);
 }
 
 .prose-theme thead {

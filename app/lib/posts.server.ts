@@ -38,6 +38,8 @@ export async function getAllSlugs() {
 }
 
 export async function getPostBySlug(slug: string) {
+  const highlight = await import('rehype-highlight')
+
   const post = await prisma.post.findUnique({
     where: {
       slug
@@ -53,7 +55,11 @@ export async function getPostBySlug(slug: string) {
   return {
     ...post,
     dateWritten: stringDate,
-    mdxBundle: await bundleMDX(post.content!)
-    // content: renderedContent
+    mdxBundle: await bundleMDX(post.content!, {
+      xdmOptions(options) {
+        options.rehypePlugins = [...(options.remarkPlugins ?? []), highlight.default]
+        return options
+      }
+    })
   }
 }

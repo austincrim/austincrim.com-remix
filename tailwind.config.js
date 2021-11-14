@@ -82,8 +82,8 @@ module.exports = {
                 color: 'var(--color-text-base)'
               },
               pre: {
-                color: 'var(--color-text-muted)',
-                backgroundColor: theme('backgroundColor.off-base')
+                color: 'hsl(0, 50%, 10%)',
+                backgroundColor: 'hsl(0, 0%, 98%)'
               },
               thead: {
                 color: 'var(--color-text-base)',

@@ -1,6 +1,7 @@
-import type { MetaFunction, LoaderFunction } from 'remix'
 import { useLoaderData, json } from 'remix'
 import { Link } from 'react-router-dom'
+import type { MetaFunction, LoaderFunction } from 'remix'
+import type { Post, Project } from '@prisma/client'
 
 import Layout from '~/components/Layout'
 import Hero from '~/components/Hero'
@@ -14,8 +15,12 @@ import { getProjects } from '~/lib/projects'
 
 export let meta: MetaFunction = () => {
   return {
-    title: "Austin Crim - a web developer's blog",
-    description: 'Welcome to remix!'
+    title: 'Austin Crim | building for the web',
+    description: 'The personal website of Austin Crim, a builder for the web',
+    'og:title': 'The personal website of Austin Crim, a builder for the web',
+    'og:image': 'https://austincrim.com/og/index.png',
+    'twitter:card': 'summary_large_image',
+    'og:url': 'https://austincrim.com'
   }
 }
 
@@ -29,29 +34,10 @@ export let loader: LoaderFunction = async () => {
 }
 
 export default function Index() {
-  let { posts, projects } = useLoaderData()
+  let { posts, projects } = useLoaderData<{ posts: Post[]; projects: Project[] }>()
 
   return (
     <>
-      {/* <Head>
-        <meta
-          key="description"
-          name="description"
-          content="The portfolio of Austin Crim, a fullstack web developer"
-        />
-        <meta
-          key="og:title"
-          property="og:title"
-          content="The portfolio of Austin Crim, a web developer"
-        />
-        <meta
-          key="og:image"
-          name="og:image"
-          content="https://austincrim.com/og/index.png"
-        ></meta>
-        <meta key="twitter:card" name="twitter:card" content="summary_large_image"></meta>
-        <meta key="og:url" property="og:url" content="https://austincrim.com" />
-      </Head> */}
       <Layout>
         <main>
           <Hero />
