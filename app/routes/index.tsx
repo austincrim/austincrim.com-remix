@@ -59,13 +59,14 @@ export default function Index() {
                   </li>
                 ))}
               </ul>
-              <Link to="/blog">
-                <a className="self-end text-lg font-semibold transition-colors text-primary hover:text-secondary group">
-                  <span className="mr-1">Read more</span>
-                  <span className="inline-block align-middle transition-transform transform group-hover:translate-x-1">
-                    <RightArrow />
-                  </span>
-                </a>
+              <Link
+                className="self-end text-lg font-semibold transition-colors text-primary hover:text-secondary group"
+                to="/blog"
+              >
+                <span className="mr-1">Read more</span>
+                <span className="inline-block align-middle transition-transform transform group-hover:translate-x-1">
+                  <RightArrow />
+                </span>
               </Link>
             </div>
           </Section>
