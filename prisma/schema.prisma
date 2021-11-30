@@ -35,8 +35,10 @@ model View {
   visitedAt DateTime @default(now())
 }
 
-model Session {
-  id        String   @id
-  createdAt DateTime @default(now())
-  expiresAt DateTime
+model Appearance {
+  id            Int    @id @default(autoincrement())
+  title         String
+  imgUrl        String
+  appearanceUrl String
+  imgAlt        String
 }

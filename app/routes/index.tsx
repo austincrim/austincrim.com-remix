@@ -1,15 +1,17 @@
-import { useLoaderData, json } from 'remix'
+import type { Appearance as TAppearance, Post, Project } from '@prisma/client'
 import { Link } from 'react-router-dom'
-import type { MetaFunction, LoaderFunction } from 'remix'
-import type { Post, Project } from '@prisma/client'
+import type { LoaderFunction, MetaFunction } from 'remix'
+import { json, useLoaderData } from 'remix'
 
-import Layout from '~/components/Layout'
-import Hero from '~/components/Hero'
-import Section from '~/components/Section'
-import ProjectCard from '~/components/ProjectCard'
-import PostPreview from '~/components/PostPreview'
-import { RightArrow } from '~/components/Icons'
+import Appearance from '~/components/Appearance'
 import Footer from '~/components/Footer'
+import Hero from '~/components/Hero'
+import { RightArrow } from '~/components/Icons'
+import Layout from '~/components/Layout'
+import PostPreview from '~/components/PostPreview'
+import ProjectCard from '~/components/ProjectCard'
+import Section from '~/components/Section'
+import { getAppearances } from '~/lib/appearances'
 import { getPosts } from '~/lib/posts.server'
 import { getProjects } from '~/lib/projects'
 
@@ -25,27 +27,29 @@ export let meta: MetaFunction = () => {
 }
 
 export let loader: LoaderFunction = async () => {
-  const [posts, projects] = await Promise.all([
+  const [posts, projects, appearances] = await Promise.all([
     getPosts({ take: 3, orderBy: { hits: 'desc' } }),
-    getProjects()
+    getProjects(),
+    getAppearances()
   ])
 
-  return json({ posts, projects })
+  return json({ posts, projects, appearances })
 }
 
 export default function Index() {
-  let { posts, projects } = useLoaderData<{ posts: Post[]; projects: Project[] }>()
+  let { posts, projects, appearances } =
+    useLoaderData<{ posts: Post[]; projects: Project[]; appearances: TAppearance[] }>()
 
   return (
     <>
       <Layout>
         <main>
           <Hero />
-          <Section title="Things I Have Built" id="portfolio">
-            <ul className="flex flex-col gap-10">
-              {projects.map((project) => (
-                <li key={project.title}>
-                  <ProjectCard project={project} />
+          <Section title="Places I Have Appeared" id="appearances">
+            <ul className="flex flex-col gap-20 py-8 md:place-items-start">
+              {appearances.map((appearance) => (
+                <li key={appearance.title}>
+                  <Appearance appearance={appearance} />
                 </li>
               ))}
             </ul>
@@ -69,6 +73,15 @@ export default function Index() {
                 </span>
               </Link>
             </div>
+          </Section>
+          <Section title="Things I Have Built" id="portfolio">
+            <ul className="flex flex-col gap-10">
+              {projects.map((project) => (
+                <li key={project.title}>
+                  <ProjectCard project={project} />
+                </li>
+              ))}
+            </ul>
           </Section>
         </main>
 

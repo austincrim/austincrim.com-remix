@@ -9,7 +9,7 @@
     "dev": "railway run npm run watch",
     "watch": "concurrently \"remix dev\" \"npm run css:watch\" ",
     "css:watch": "tailwindcss -i app/styles/in.css -o app/styles/tailwind.css --watch",
-    "css:build": "NODE_ENV=production tailwindcss -i app/styles/in.css -o app/styles/tailwind.css",
+    "css:build": "NODE_ENV=production tailwindcss -i app/styles/in.css -o app/styles/tailwind.css --minify",
     "postinstall": "remix setup node",
     "start": "remix-serve build"
   },
