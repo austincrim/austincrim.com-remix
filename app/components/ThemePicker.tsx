@@ -23,13 +23,6 @@ const themes = [
 ]
 
 export default function ThemePicker() {
-  function pickTheme(theme) {
-    if (theme === current) return
-    document.documentElement.classList.add(theme)
-    localStorage.setItem('crimTheme', theme)
-    document.documentElement.classList.remove(current)
-    setCurrent(theme)
-  }
   const [current, setCurrent] = React.useState('')
 
   React.useEffect(() => {
@@ -39,15 +32,15 @@ export default function ThemePicker() {
   return (
     <div
       id="theme-container"
-      className="absolute w-full overflow-hidden transition-all shadow-sm bg-off-base picker-closed"
+      className="absolute w-full overflow-hidden transition-all duration-300 shadow-sm bg-off-base picker-closed"
     >
       <ul
         id="swatch-list"
-        className="p-4 overflow-x-auto text-center transition-transform whitespace-nowrap picker-closed__swatches"
+        className="p-4 overflow-x-auto text-center transition-all duration-300 whitespace-nowrap picker-closed__swatches"
       >
         {themes.map((theme) => (
           <li
-            className={`inline-block mx-4 ${theme.id} transition-transform duration-150 hover:rotate-2`}
+            className={`inline-block mx-4 ${theme.id} transition-transform hover:rotate-2`}
             key={theme.id}
           >
             <button

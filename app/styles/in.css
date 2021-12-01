@@ -29,7 +29,7 @@ body {
 }
 
 .picker-closed {
-  @apply duration-200 ease-in -translate-y-full opacity-0;
+  @apply ease-in -translate-y-full opacity-0;
 }
 
 .picker-open__body {
@@ -37,7 +37,7 @@ body {
 }
 
 .picker-closed__body {
-  @apply duration-200 ease-in translate-y-0;
+  @apply duration-300 ease-in translate-y-0;
 }
 
 .picker-open__swatches {

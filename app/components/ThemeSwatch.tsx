@@ -1,11 +1,9 @@
-import * as React from 'react';
-
 export default function ThemeSwatch({ title, active }) {
   return (
     <div
-      className={`theme-${title.toLowerCase()} ${
+      className={`theme-${title.toLowerCase()} transition-transform duration-300 ${
         active ? 'transform scale-110 ring' : ''
-      } rounded flex flex-col items-center px-5 py-3 text-base bg-base hover:bg-off-base hover:text-primary group-focus:bg-off-base group-focus:text-primary transition-all`}
+      } rounded flex flex-col items-center px-5 py-3 text-base bg-base hover:bg-off-base hover:text-primary group-focus:bg-off-base group-focus:text-primary`}
     >
       <span className="text-sm">{title}</span>
       <div className="flex mt-4 -space-x-2">
@@ -15,5 +13,5 @@ export default function ThemeSwatch({ title, active }) {
         <div className={`h-8 w-8 rounded-full border bg-muted`} />
       </div>
     </div>
-  );
+  )
 }
