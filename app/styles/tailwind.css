@@ -1739,10 +1739,6 @@ body {
   transition-duration: 150ms;
 }
 
-.duration-1000 {
-  transition-duration: 1000ms;
-}
-
 .hover\:rotate-2:hover {
   --tw-rotate: 2deg;
   transform: var(--tw-transform);
