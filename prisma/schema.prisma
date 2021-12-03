@@ -36,9 +36,14 @@ model View {
 }
 
 model Appearance {
-  id            Int    @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   title         String
-  imgUrl        String
   appearanceUrl String
-  imgAlt        String
+  type          AppearanceType?
+}
+
+enum AppearanceType {
+  Stream
+  Talk
+  Screencast
 }

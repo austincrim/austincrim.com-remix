@@ -46,7 +46,7 @@ export default function Index() {
         <main>
           <Hero />
           <Section title="Places I Have Appeared" id="appearances">
-            <ul className="flex flex-col gap-20 py-8 md:place-items-start">
+            <ul className="flex flex-col gap-20 py-8">
               {appearances.map((appearance) => (
                 <li key={appearance.title}>
                   <Appearance appearance={appearance} />
