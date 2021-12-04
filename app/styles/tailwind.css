@@ -1303,12 +1303,6 @@ body {
   width: 100%;
 }
 
-.w-min {
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
-}
-
 .max-w-lg {
   max-width: 32rem;
 }
@@ -1375,6 +1369,10 @@ body {
   justify-content: space-around;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-20 {
   gap: 5rem;
 }
@@ -1385,10 +1383,6 @@ body {
 
 .gap-4 {
   gap: 1rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
 }
 
 .space-y-14 > :not([hidden]) ~ :not([hidden]) {
@@ -1475,22 +1469,6 @@ body {
   border-radius: 9999px;
 }
 
-.rounded-md {
-  border-radius: 0.375rem;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-
-.rounded-2xl {
-  border-radius: 1rem;
-}
-
 .border {
   border-width: 1px;
 }
@@ -1518,10 +1496,6 @@ body {
 .bg-muted {
   --tw-bg-opacity: 1;
   background-color: rgba(var(--color-text-muted), var(--tw-bg-opacity));
-}
-
-.bg-gradient-to-tr {
-  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
 
 .bg-clip-text {
@@ -1560,16 +1534,6 @@ body {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 
 .pb-16 {
@@ -1627,6 +1591,11 @@ body {
   line-height: 2.5rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .font-light {
   font-weight: 300;
 }
@@ -1649,6 +1618,14 @@ body {
 
 .leading-loose {
   line-height: 2;
+}
+
+.leading-10 {
+  line-height: 2.5rem;
+}
+
+.leading-normal {
+  line-height: 1.5;
 }
 
 .tracking-wide {
@@ -1688,14 +1665,9 @@ body {
   color: rgba(var(--color-text-muted-hover), var(--tw-text-opacity));
 }
 
-.text-gray-50 {
+.text-gray-800 {
   --tw-text-opacity: 1;
-  color: rgba(249, 250, 251, var(--tw-text-opacity));
-}
-
-.text-gray-100 {
-  --tw-text-opacity: 1;
-  color: rgba(243, 244, 246, var(--tw-text-opacity));
+  color: rgba(31, 41, 55, var(--tw-text-opacity));
 }
 
 .underline {
@@ -1842,20 +1814,12 @@ body {
     width: 66.666667%;
   }
 
-  .md\:w-full {
-    width: 100%;
-  }
-
   .md\:max-w-3xl {
     max-width: 48rem;
   }
 
   .md\:flex-row {
     flex-direction: row;
-  }
-
-  .md\:place-items-start {
-    place-items: start;
   }
 
   .md\:items-start {
@@ -1898,10 +1862,6 @@ body {
 
   .md\:pl-2 {
     padding-left: 0.5rem;
-  }
-
-  .md\:align-top {
-    vertical-align: top;
   }
 }
 

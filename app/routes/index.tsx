@@ -2,7 +2,6 @@ import type { Appearance as TAppearance, Post, Project } from '@prisma/client'
 import { Link } from 'react-router-dom'
 import type { LoaderFunction, MetaFunction } from 'remix'
 import { json, useLoaderData } from 'remix'
-
 import Appearance from '~/components/Appearance'
 import Footer from '~/components/Footer'
 import Hero from '~/components/Hero'
@@ -55,8 +54,8 @@ export default function Index() {
             </ul>
           </Section>
           <Section title="Things I Have Written" id="blog">
-            <div className="flex flex-col gap-10">
-              <ul className="flex flex-col mt-20 space-y-20">
+            <div className="flex flex-col gap-10 py-8">
+              <ul className="flex flex-col gap-20 ">
                 {posts.map((post) => (
                   <li key={post.slug}>
                     <PostPreview post={post} />

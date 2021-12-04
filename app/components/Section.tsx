@@ -11,7 +11,7 @@ const Section = (props) => {
         {props.children}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Section;
+export default Section

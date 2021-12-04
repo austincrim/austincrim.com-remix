@@ -10,9 +10,7 @@ export default function Hero() {
             Austin Crim
           </span>
         </h1>
-        <h2 className="max-w-lg mt-4 text-3xl font-light">
-          I build things for the web.
-        </h2>
+        <h2 className="max-w-lg mt-4 text-3xl font-light">I build things for the web.</h2>
       </div>
       <div className="flex flex-col items-start justify-center space-y-4">
         <a
