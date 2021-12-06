@@ -1,9 +1,7 @@
-export default function ThemeSwatch({ title, active }) {
+export default function ThemeSwatch({ title }) {
   return (
     <div
-      className={`theme-${title.toLowerCase()} transition-transform duration-300 ${
-        active ? 'transform scale-110 ring' : ''
-      } rounded flex flex-col items-center px-5 py-3 text-base bg-base hover:bg-off-base hover:text-primary group-focus:bg-off-base group-focus:text-primary`}
+      className={`theme-${title.toLowerCase()} transition-transform duration-300 rounded flex flex-col items-center px-5 py-3 text-base bg-base hover:bg-off-base hover:text-primary group-focus:bg-off-base group-focus:text-primary`}
     >
       <span className="text-sm">{title}</span>
       <div className="flex mt-4 -space-x-2">

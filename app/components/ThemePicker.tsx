@@ -23,12 +23,6 @@ const themes = [
 ]
 
 export default function ThemePicker() {
-  const [current, setCurrent] = React.useState('')
-
-  React.useEffect(() => {
-    setCurrent(localStorage.crimTheme)
-  }, [])
-
   return (
     <div
       id="theme-container"
@@ -45,10 +39,11 @@ export default function ThemePicker() {
           >
             <button
               aria-label={`select ${theme.title} theme`}
+              aria-expanded="false"
               className="transition-transform duration-150 rounded focus:outline-none focus:ring-4 group"
               data-theme={theme.id}
             >
-              <ThemeSwatch active={current === theme.id} title={theme.title} />
+              <ThemeSwatch title={theme.title} />
             </button>
           </li>
         ))}

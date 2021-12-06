@@ -1,4 +1,5 @@
 let current = localStorage.crimTheme
+let expanded = false
 
 if (localStorage.crimTheme) {
   document.documentElement.classList.add(localStorage.crimTheme)
@@ -23,6 +24,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     swatches.classList.toggle('picker-closed__swatches')
     swatches.classList.toggle('picker-open__swatches')
+
+    expanded = !expanded
+    openButton.setAttribute('aria-expanded', expanded)
   }
 
   themeButtons.forEach((button) => {
