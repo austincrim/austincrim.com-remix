@@ -1,6 +1,6 @@
 import type { Appearance as TAppearance, Post, Project } from '@prisma/client'
 import { Link } from 'react-router-dom'
-import type { LoaderFunction, MetaFunction } from 'remix'
+import type { LoaderFunction, MetaFunction, HeadersFunction } from 'remix'
 import { json, useLoaderData } from 'remix'
 import Appearance from '~/components/Appearance'
 import Footer from '~/components/Footer'
@@ -33,6 +33,12 @@ export let loader: LoaderFunction = async () => {
   ])
 
   return json({ posts, projects, appearances })
+}
+
+export let headers: HeadersFunction = () => {
+  return {
+    'cache-control': `smax-age=${60 * 60 * 3}`
+  }
 }
 
 export default function Index() {

@@ -1,7 +1,7 @@
 import PostPreview from '../components/PostPreview'
 import Layout from '../components/Layout'
 import { getPosts } from '../lib/posts.server'
-import { LoaderFunction, useLoaderData, json, MetaFunction } from 'remix'
+import { LoaderFunction, useLoaderData, json, MetaFunction, HeadersFunction } from 'remix'
 import { Post } from '@prisma/client'
 
 export let loader: LoaderFunction = async () => {
@@ -16,6 +16,12 @@ export let meta: MetaFunction = () => {
     'og:title': 'Austin Crim | blogging about the web',
     'og:image': 'https://austincrim.com/og/index.png',
     'twitter:card': 'summary_large_image'
+  }
+}
+
+export let headers: HeadersFunction = () => {
+  return {
+    'cache-control': `smax-age=${60 * 30}`
   }
 }
 
