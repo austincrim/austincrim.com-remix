@@ -19,12 +19,14 @@ export let links: LinksFunction = () => {
 
 export let loader: LoaderFunction = async ({ params }) => {
   let post = await getPostBySlug(params.slug!)
-  return json(post, { headers: { 'Cache-Control': 'max-age=300' } })
+  return json(post, {
+    headers: { 'Cache-Control': 'max-age=0, s-maxage=300, stale-while-revalidate=300' }
+  })
 }
 
 export let headers: HeadersFunction = () => {
   return {
-    'Cache-Control': 'max-age=300'
+    'Cache-Control': 'max-age=0, s-maxage=300, stale-while-revalidate=300'
   }
 }
 
