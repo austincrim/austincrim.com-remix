@@ -10,8 +10,7 @@ let browser
 async function main() {
   browser = await puppeteer.launch({
     args: chrome.args,
-    executablePath:
-      'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     headless: chrome.headless
   })
 
