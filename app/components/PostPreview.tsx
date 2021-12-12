@@ -13,10 +13,9 @@ export default function PostPreview({ post }: { post: Post }) {
               <span className="text-muted">
                 {new Date(post.dateWritten).toLocaleDateString()}
               </span>
-              <span className="text-muted">{post.hits} hits</span>
             </div>
           </div>
-          <p className="max-w-3xl leading-8 text-muted">{post.lede}</p>
+          <p className="max-w-3xl leading-8">{post.lede}</p>
         </div>
         <span className="absolute transition opacity-0 group-hover:opacity-100 -right-8">
           <RightArrow height={32} width={32} />

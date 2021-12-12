@@ -51,6 +51,7 @@ export default function Post() {
       >
         <div className="flex flex-col space-y-4">
           <h1 className="inline pt-10 text-4xl text-primary heading">{post.title}</h1>
+          <span className="text-lg">{post.lede}</span>
           <span className="text-muted">
             {new Date(post.dateWritten).toLocaleDateString()}
           </span>
