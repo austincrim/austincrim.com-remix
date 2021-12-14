@@ -1,10 +1,14 @@
 import { Appearance as TAppearance } from '@prisma/client'
 
-export default function Appearance({ appearance }: { appearance: TAppearance }) {
+export default function Appearance({
+  appearance
+}: {
+  appearance: TAppearance
+}) {
   return (
-    <div className="flex flex-col gap-2 md:flex-row md:justify-between md:items-start">
+    <div className="flex flex-col gap-2 appearance md:flex-row md:justify-between md:items-start">
       <a
-        className="text-2xl leading-normal transition-colors text-secondary hover:text-primary"
+        className="text-xl leading-normal transition-colors text-secondary hover:text-primary"
         href={appearance.appearanceUrl}
       >
         {appearance.title}

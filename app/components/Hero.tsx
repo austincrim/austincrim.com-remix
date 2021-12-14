@@ -2,7 +2,7 @@ import { RightArrow } from './Icons'
 
 export default function Hero() {
   return (
-    <div className="flex flex-col justify-between my-20 space-y-14 md:items-end md:flex-row">
+    <div className="flex flex-col justify-between my-20 hero space-y-14 md:items-end md:flex-row">
       <div className="flex flex-col md:w-2/3">
         <h1 className="text-5xl">
           <span>Hi, I'm&nbsp;</span>
@@ -10,7 +10,9 @@ export default function Hero() {
             Austin Crim
           </span>
         </h1>
-        <h2 className="max-w-lg mt-4 text-3xl font-light">I build things for the web.</h2>
+        <h2 className="max-w-lg mt-4 text-3xl font-light">
+          I build things for the web.
+        </h2>
       </div>
       <div className="flex flex-col items-start justify-center space-y-4">
         <a

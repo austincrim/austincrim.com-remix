@@ -29,12 +29,6 @@ model Project {
   order       Int?    @default(-1)
 }
 
-model View {
-  id        String   @id @default(uuid())
-  path      String
-  visitedAt DateTime @default(now())
-}
-
 model Appearance {
   id            Int             @id @default(autoincrement())
   title         String
@@ -42,8 +36,20 @@ model Appearance {
   type          AppearanceType?
 }
 
+model User {
+  id          String @id
+  email       String @unique
+  accessToken String @unique
+  role        Role
+}
+
 enum AppearanceType {
   Stream
   Talk
   Screencast
+}
+
+enum Role {
+  Admin
+  Other
 }
