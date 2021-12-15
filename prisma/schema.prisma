@@ -30,10 +30,10 @@ model Project {
 }
 
 model Appearance {
-  id            Int             @id @default(autoincrement())
+  id            Int     @id @default(autoincrement())
   title         String
   appearanceUrl String
-  type          AppearanceType?
+  origin        String?
 }
 
 model User {
@@ -41,12 +41,6 @@ model User {
   email       String @unique
   accessToken String @unique
   role        Role
-}
-
-enum AppearanceType {
-  Stream
-  Talk
-  Screencast
 }
 
 enum Role {
