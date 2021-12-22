@@ -1,7 +1,6 @@
 import type { Appearance as TAppearance, Post, Project } from '@prisma/client'
-import { Link } from 'react-router-dom'
 import type { LoaderFunction, MetaFunction, HeadersFunction } from 'remix'
-import { json, useLoaderData } from 'remix'
+import { json, useLoaderData, Link } from 'remix'
 import Appearance from '~/components/Appearance'
 import Footer from '~/components/Footer'
 import Hero from '~/components/Hero'
@@ -42,8 +41,11 @@ export let headers: HeadersFunction = () => {
 }
 
 export default function Index() {
-  let { posts, projects, appearances } =
-    useLoaderData<{ posts: Post[]; projects: Project[]; appearances: TAppearance[] }>()
+  let { posts, projects, appearances } = useLoaderData<{
+    posts: Post[]
+    projects: Project[]
+    appearances: TAppearance[]
+  }>()
 
   return (
     <>
@@ -92,7 +94,10 @@ export default function Index() {
 
         <Footer>
           <div className="flex flex-col items-center gap-4">
-            <a className="font-medium underline" href="mailto:aust.crim@gmail.com">
+            <a
+              className="font-medium underline"
+              href="mailto:aust.crim@gmail.com"
+            >
               Say Hi
             </a>
             <span>Designed and developed by Austin Crim</span>

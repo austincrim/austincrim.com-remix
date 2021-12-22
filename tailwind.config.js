@@ -8,8 +8,7 @@ function withOpacity(variableName) {
 }
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./app/**/*.tsx'],
+  content: ['./app/**/*.tsx'],
   variants: {},
   theme: {
     extend: {
