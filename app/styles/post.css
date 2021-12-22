@@ -20,12 +20,12 @@
 }
 
 .article {
-  animation: fade-in 500ms ease-out 200ms backwards, slide-in 400ms ease-out 200ms;
+  animation: fade-in 500ms ease-out 200ms backwards,
+    slide-in 400ms ease-out 200ms;
 }
 
 .hljs {
   color: #24292e;
-  background: #ffffff;
 }
 
 .hljs-doctag,
