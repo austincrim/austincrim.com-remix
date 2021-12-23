@@ -2,7 +2,7 @@ import type { LinksFunction } from 'remix'
 import { Links, LiveReload, Meta, Outlet } from 'remix'
 import Layout from './components/Layout'
 
-import stylesUrl from './styles/tailwind.css'
+import stylesUrl from './styles/root.css'
 
 export let links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: stylesUrl }]

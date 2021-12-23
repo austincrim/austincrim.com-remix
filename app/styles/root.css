@@ -1,33 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@500&family=Merriweather:wght@300;400;700;900&display=swap');
+@import url('https://unpkg.com/open-props');
+@import url('https://unpkg.com/open-props/normalize.min.css');
 
-@tailwind base;
-@tailwind components;
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.prose {
+html,
+body {
+  color: var(--gray-8);
+  font-family: 'Merriweather', serif;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#site-body {
+  max-width: 100ch;
+  margin-inline: auto;
+  padding-inline: var(--size-8);
+  padding-block-start: var(--size-8);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--size-10);
+
+  color: var(--gray-9);
   font-family: sans-serif;
-  font-family: 'Merriweather', sans-serif;
+  font-size: var(--font-size-3);
+}
+
+.nav-left {
+  display: flex;
+  gap: var(--size-8);
+}
+
+.nav-right {
+  display: flex;
+  gap: var(--size-4);
+}
+
+.nav-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  transition: color 200ms;
+  appearance: none;
+  border: none;
+  background: none;
+  color: var(--gray-9);
+}
+
+nav a:hover,
+.nav-icon:hover {
+  color: var(--gray-7);
+}
+
+.theme-picker-container {
+  position: absolute;
 }
 
 .picker-open {
-  @apply translate-y-0 duration-[400ms] ease-out;
+  transform: translateY(0px);
+  transition: transform 400ms ease-out;
 }
 
 .picker-closed {
-  @apply ease-in -translate-y-full opacity-0;
+  transform: translateY(-100%);
+  opacity: 0;
 }
 
 .picker-open__body {
-  @apply translate-y-[124px] duration-[400ms] ease-out;
+  transform: translateY(0px) 300ms ease-in;
 }
 
 .picker-closed__body {
-  @apply duration-300 ease-in translate-y-0;
+  transform: translateY(124px) 400ms ease-out;
 }
 
 .picker-open__swatches {
@@ -37,8 +92,6 @@ h6,
 .picker-closed__swatches {
   @apply duration-150 ease-in -translate-y-10;
 }
-
-@tailwind utilities;
 
 :root {
   --color-base: 255, 255, 255; /* white */
@@ -95,7 +148,43 @@ h6,
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
 
-.appearance a {
-  text-decoration: underline;
-  text-decoration-color: rgb(var(--color-primary));
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+h2 {
+  position: relative;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: auto;
+  aspect-ratio: 1/1;
+  left: -3rem;
+  top: 1rem;
+
+  background-color: var(--indigo-2);
+  border-radius: var(--radius-blob-4);
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  color: currentColor;
+}
+
+a:visited {
+  color: currentColor;
 }

@@ -1,5 +1,10 @@
 import type { Appearance as TAppearance, Post, Project } from '@prisma/client'
-import type { LoaderFunction, MetaFunction, HeadersFunction } from 'remix'
+import type {
+  LoaderFunction,
+  MetaFunction,
+  HeadersFunction,
+  LinksFunction
+} from 'remix'
 import { json, useLoaderData, Link } from 'remix'
 import Appearance from '~/components/Appearance'
 import Footer from '~/components/Footer'
@@ -13,6 +18,8 @@ import { getAppearances } from '~/lib/appearances'
 import { getPosts } from '~/lib/posts.server'
 import { getProjects } from '~/lib/projects'
 
+import stylesUrl from '../styles/index.css'
+
 export let meta: MetaFunction = () => {
   return {
     title: 'Austin Crim | building for the web',
@@ -24,6 +31,16 @@ export let meta: MetaFunction = () => {
   }
 }
 
+export let links: LinksFunction = () => {
+  return [{ href: stylesUrl, rel: 'stylesheet' }]
+}
+
+export let headers: HeadersFunction = () => {
+  return {
+    'cache-control': `smax-age=${60 * 60 * 3}`
+  }
+}
+
 export let loader: LoaderFunction = async () => {
   const [posts, projects, appearances] = await Promise.all([
     getPosts({ take: 3, orderBy: { hits: 'desc' } }),
@@ -32,12 +49,6 @@ export let loader: LoaderFunction = async () => {
   ])
 
   return json({ posts, projects, appearances })
-}
-
-export let headers: HeadersFunction = () => {
-  return {
-    'cache-control': `smax-age=${60 * 60 * 3}`
-  }
 }
 
 export default function Index() {

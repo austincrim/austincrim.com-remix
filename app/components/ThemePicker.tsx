@@ -1,6 +1,4 @@
 // the design for this component was directly inspired by Max Bock's personal website. Check out his amazing work here: https://mxb.dev/
-
-import * as React from 'react'
 import ThemeSwatch from './ThemeSwatch'
 
 const themes = [
@@ -26,7 +24,7 @@ export default function ThemePicker() {
   return (
     <div
       id="theme-container"
-      className="absolute w-full overflow-hidden transition-all duration-300 shadow-sm bg-off-base picker-closed"
+      className="absolute w-full overflow-hidden transition-all duration-300 shadow-sm theme-picker-container bg-off-base picker-closed"
     >
       <ul
         id="swatch-list"
