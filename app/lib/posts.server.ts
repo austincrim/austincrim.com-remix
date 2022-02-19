@@ -55,7 +55,8 @@ export async function getPostBySlug(slug: string) {
   return {
     ...post,
     dateWritten: stringDate,
-    mdxBundle: await bundleMDX(post.content!, {
+    mdxBundle: await bundleMDX({
+      source: post.content!,
       xdmOptions(options) {
         options.rehypePlugins = [
           ...(options.remarkPlugins ?? []),

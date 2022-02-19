@@ -20,7 +20,9 @@ export let links: LinksFunction = () => {
 export let loader: LoaderFunction = async ({ params }) => {
   let post = await getPostBySlug(params.slug!)
   return json(post, {
-    headers: { 'Cache-Control': 'max-age=0, s-maxage=300, stale-while-revalidate=300' }
+    headers: {
+      'Cache-Control': 'max-age=0, s-maxage=300, stale-while-revalidate=300'
+    }
   })
 }
 
@@ -47,17 +49,19 @@ export default function Post() {
   return (
     <Layout>
       <article
-        className={`flex flex-col justify-around max-w-4xl pb-16 mx-auto space-y-10 text-base`}
+        className={`flex flex-col justify-around pb-16 space-y-10 text-base`}
       >
         <div className="flex flex-col space-y-4">
-          <h1 className="inline pt-10 text-4xl text-primary heading">{post.title}</h1>
+          <h1 className="inline pt-10 text-4xl text-primary heading">
+            {post.title}
+          </h1>
           <span className="text-lg">{post.lede}</span>
           <span className="text-muted">
             {new Date(post.dateWritten).toLocaleDateString()}
           </span>
         </div>
         <div className="max-w-4xl">
-          <div className="mt-8 prose prose-theme max-w-none article">
+          <div className="mt-8 leading-loose prose prose-theme max-w-none article">
             <Component />
           </div>
         </div>
