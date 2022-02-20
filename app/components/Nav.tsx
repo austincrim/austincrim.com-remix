@@ -1,5 +1,5 @@
 import { Link } from 'remix'
-import { GitHubLogo, TwitterLogo, ColorSwatch } from './Icons'
+import { GitHubLogo, TwitterLogo } from './Icons'
 
 const Nav = () => {
   return (
@@ -13,9 +13,6 @@ const Nav = () => {
         </Link>
       </div>
       <div className="nav-right">
-        <button aria-label="toggle theme picker" className="nav-icon">
-          <ColorSwatch />
-        </button>
         <a
           aria-label="austin crim's github profile"
           href="https://github.com/austincrim"

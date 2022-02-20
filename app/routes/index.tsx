@@ -7,7 +7,6 @@ import type {
 } from 'remix'
 import { json, useLoaderData, Link } from 'remix'
 import Appearance from '~/components/Appearance'
-import Footer from '~/components/Footer'
 import Hero from '~/components/Hero'
 import { RightArrow } from '~/components/Icons'
 import Layout from '~/components/Layout'
@@ -37,7 +36,7 @@ export let links: LinksFunction = () => {
 
 export let headers: HeadersFunction = () => {
   return {
-    'cache-control': `smax-age=${60 * 60 * 3}`
+    'cache-control': `s-maxage=${60 * 60 * 3}`
   }
 }
 
@@ -63,7 +62,7 @@ export default function Index() {
       <Layout>
         <main>
           <Hero />
-          <Section title="Places I Have Appeared" id="appearances">
+          {/* <Section title="Places I Have Appeared" id="appearances">
             <ul className="flex flex-col gap-20 py-8">
               {appearances.map((appearance) => (
                 <li key={appearance.title}>
@@ -100,20 +99,18 @@ export default function Index() {
                 </li>
               ))}
             </ul>
-          </Section>
+          </Section> */}
         </main>
 
-        <Footer>
-          <div className="flex flex-col items-center gap-4">
-            <a
-              className="font-medium underline"
-              href="mailto:aust.crim@gmail.com"
-            >
-              Say Hi
-            </a>
-            <span>Designed and developed by Austin Crim</span>
-          </div>
-        </Footer>
+        <footer>
+          <a
+            className="font-medium underline"
+            href="mailto:aust.crim@gmail.com"
+          >
+            Say Hi
+          </a>
+          <span>Designed and developed by Austin Crim</span>
+        </footer>
       </Layout>
     </>
   )

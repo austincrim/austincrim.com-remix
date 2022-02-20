@@ -23,7 +23,10 @@ body {
   max-width: 100ch;
   margin-inline: auto;
   padding-inline: var(--size-8);
-  padding-block-start: var(--size-8);
+  padding-block: var(--size-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 nav {
@@ -63,34 +66,19 @@ nav a:hover,
   color: var(--gray-7);
 }
 
-.theme-picker-container {
-  position: absolute;
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--size-2);
+  position: fixed;
+  bottom: 0;
+  padding-block-end: var(--size-8);
 }
 
-.picker-open {
-  transform: translateY(0px);
-  transition: transform 400ms ease-out;
-}
-
-.picker-closed {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-.picker-open__body {
-  transform: translateY(0px) 300ms ease-in;
-}
-
-.picker-closed__body {
-  transform: translateY(124px) 400ms ease-out;
-}
-
-.picker-open__swatches {
-  @apply duration-300 ease-out translate-y-0;
-}
-
-.picker-closed__swatches {
-  @apply duration-150 ease-in -translate-y-10;
+footer a {
+  font-weight: var(--font-weight-7);
+  text-decoration: underline;
 }
 
 :root {
@@ -121,26 +109,6 @@ nav a:hover,
   --color-text-muted-hover: 209, 213, 219;
   --color-primary: 147, 197, 253; /* blue-300 */
   --color-secondary: 96, 165, 250; /* blue-400 */
-}
-
-.theme-solar {
-  --color-base: 255, 241, 242; /* rose-50 */
-  --color-text-base: 26, 28, 35;
-  --color-off-base: 255, 234, 236;
-  --color-text-muted: 68, 64, 60;
-  --color-text-muted-hover: 120, 113, 108;
-  --color-primary: 180, 83, 9;
-  --color-secondary: 248, 113, 113;
-}
-
-.theme-evergreen {
-  --color-base: 4, 120, 87;
-  --color-text-base: 240, 253, 244;
-  --color-off-base: 5, 150, 105; /* emerald-600 */
-  --color-text-muted: 240, 253, 244; /* green-50 */
-  --color-text-muted-hover: 187, 247, 208; /* green-200 */
-  --color-primary: 254, 243, 199; /* amber-100 */
-  --color-secondary: 253, 230, 138; /* amber-300 */
 }
 
 .theme-gradient {
