@@ -17,12 +17,6 @@ export default function App() {
         <link rel="icon" href="/favicon.ico" type="image/png" />
         <Meta />
         <Links />
-        <script src="/theme.js" />
-        <script
-          src="https://cdn.usefathom.com/script.js"
-          data-site="QBFTQGKQ"
-          defer
-        ></script>
       </head>
       <body className="text-base transition-colors duration-300 bg-base">
         <Outlet />
