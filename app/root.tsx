@@ -2,7 +2,7 @@ import type { LinksFunction } from 'remix'
 import { Links, LiveReload, Meta, Outlet } from 'remix'
 import Layout from './components/Layout'
 
-import stylesUrl from './styles/root.css'
+import stylesUrl from './styles/tailwind.css'
 
 export let links: LinksFunction = () => {
   return [{ rel: 'stylesheet', href: stylesUrl }]
@@ -10,7 +10,7 @@ export let links: LinksFunction = () => {
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="en" className="w-full h-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +18,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="text-base transition-colors duration-300 bg-base">
+      <body className="w-full h-full">
         <Outlet />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
@@ -44,7 +44,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
           defer
         ></script>
       </head>
-      <body className="text-base transition-colors duration-300 bg-base">
+      <body>
         <Layout>
           <div className="flex flex-col items-center gap-10">
             <p className="text-xl font-bold">

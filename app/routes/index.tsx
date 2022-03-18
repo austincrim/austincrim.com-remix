@@ -1,18 +1,4 @@
-import type { Appearance as TAppearance, Post, Project } from '@prisma/client'
-import type {
-  LoaderFunction,
-  MetaFunction,
-  HeadersFunction,
-  LinksFunction
-} from 'remix'
-import { json, useLoaderData, Link } from 'remix'
-import Hero from '~/components/Hero'
-import Layout from '~/components/Layout'
-import { getAppearances } from '~/lib/appearances'
-import { getPosts } from '~/lib/posts.server'
-import { getProjects } from '~/lib/projects'
-
-import stylesUrl from '../styles/index.css'
+import { type MetaFunction, type HeadersFunction, Link } from 'remix'
 
 export let meta: MetaFunction = () => {
   return {
@@ -25,39 +11,39 @@ export let meta: MetaFunction = () => {
   }
 }
 
-export let links: LinksFunction = () => {
-  return [{ href: stylesUrl, rel: 'stylesheet' }]
-}
-
 export let headers: HeadersFunction = () => {
   return {
     'cache-control': `s-maxage=${60 * 60 * 3}`
   }
 }
 
-// export let loader: LoaderFunction = async () => {
-//   const [posts, projects, appearances] = await Promise.all([
-//     getPosts({ take: 3, orderBy: { hits: 'desc' } }),
-//     getProjects(),
-//     getAppearances()
-//   ])
-
-//   return json({ posts, projects, appearances })
-// }
-
 export default function Index() {
-  // let { posts, projects, appearances } = useLoaderData<{
-  //   posts: Post[]
-  //   projects: Project[]
-  //   appearances: TAppearance[]
-  // }>()
-
   return (
     <>
-      <div id="site-body">
-        <main>
-          <Hero />
-        </main>
+      <div className="grid w-full h-full place-content-center">
+        <header className="px-8 py-16 mx-8 text-center border-4 border-gray-800 rounded-sm bg-gray-50 shadow-theme lg:text-left">
+          <h1 className="text-5xl font-bold text-indigo-800 lg:text-6xl font-theme">
+            Hello World! I'm&nbsp;Austin.
+          </h1>
+          <p className="mt-4 text-3xl text-gray-800">
+            I create things&nbsp;
+            <Link
+              className="text-indigo-900 underline hover:text-indigo-700"
+              to="/projects"
+            >
+              for
+            </Link>
+            &nbsp;and&nbsp;
+            <Link
+              className="text-indigo-900 underline hover:text-indigo-700"
+              to="/content"
+            >
+              about
+            </Link>
+            &nbsp;the web.
+          </p>
+        </header>
+        <main></main>
       </div>
     </>
   )
