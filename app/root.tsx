@@ -1,6 +1,5 @@
 import type { LinksFunction } from 'remix'
 import { Links, LiveReload, Meta, Outlet } from 'remix'
-import Layout from './components/Layout'
 
 import stylesUrl from './styles/tailwind.css'
 
@@ -10,7 +9,7 @@ export let links: LinksFunction = () => {
 
 export default function App() {
   return (
-    <html lang="en" className="w-full h-full">
+    <html lang="en" className="h-full max-w-full">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +17,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="w-full h-full">
+      <body className="h-full max-w-full">
         <Outlet />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
@@ -37,24 +36,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <link rel="icon" href="/favicon.ico" type="image/png" />
         <Meta />
         <Links />
-        <script src="/theme.js" />
-        <script
-          src="https://cdn.usefathom.com/script.js"
-          data-site="QBFTQGKQ"
-          defer
-        ></script>
       </head>
-      <body>
-        <Layout>
-          <div className="flex flex-col items-center gap-10">
-            <p className="text-xl font-bold">
-              Yikes! This wasn't supposed to happen 🤔.
-            </p>
-            <pre className="p-4 border border-black rounded">
-              {error.message}
-            </pre>
-          </div>
-        </Layout>
+      <body className="h-full max-w-full">
+        <pre>{error.message}</pre>
       </body>
     </html>
   )

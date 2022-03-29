@@ -1,38 +1,38 @@
 {
+  "name": "remix-template-cloudflare-pages-ts",
   "private": true,
-  "name": "austincrim.com",
   "description": "",
   "license": "",
+  "sideEffects": false,
   "scripts": {
     "build": "remix build",
-    "dev": "concurrently \"npm run watch:remix\" \"npm run watch:css\"",
-    "watch:remix": "railway run remix dev",
-    "watch:css": "tailwindcss -i app/styles/root.css -o app/styles/tailwind.css -w",
-    "postinstall": "remix setup node",
-    "start": "remix-serve build"
+    "dev:css": "tailwindcss -i app/styles/root.css -o app/styles/tailwind.css -w",
+    "dev:remix": "remix watch",
+    "dev:wrangler": "cross-env NODE_ENV=development wrangler pages dev ./public",
+    "dev": "remix build && run-p dev:*",
+    "postinstall": "remix setup cloudflare",
+    "start": "cross-env NODE_ENV=production npm run dev:wrangler"
   },
   "dependencies": {
-    "@prisma/client": "^3.10.0",
-    "@remix-run/react": "^1.2.3",
-    "@remix-run/serve": "^1.2.3",
+    "@remix-run/cloudflare-pages": "^1.3.2",
+    "@remix-run/react": "^1.3.2",
+    "cross-env": "^7.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "6.2.2",
-    "remix": "^1.2.3"
+    "remix": "^1.3.2"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.2.3",
+    "@cloudflare/workers-types": "^3.2.0",
+    "@remix-run/dev": "^1.3.2",
     "@tailwindcss/typography": "^0.5.2",
-    "@types/react": "^17.0.40",
-    "@types/react-dom": "^17.0.13",
-    "chrome-aws-lambda": "^10.1.0",
-    "concurrently": "^7.0.0",
-    "puppeteer-core": "^13.5.1",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "npm-run-all": "^4.1.5",
     "tailwindcss": "^3.0.23",
-    "typescript": "^4.6.2"
+    "typescript": "^4.5.5",
+    "wrangler": "beta"
   },
   "engines": {
     "node": ">=14"
-  },
-  "sideEffects": false
+  }
 }

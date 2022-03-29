@@ -9,3 +9,11 @@ html {
   background-repeat: repeat;
   background-size: 3px;
 }
+
+a[href] {
+  @apply text-indigo-900 underline hover:text-indigo-700;
+}
+
+.heading-primary {
+  @apply text-5xl font-bold text-center text-indigo-800 lg:text-6xl font-theme;
+}

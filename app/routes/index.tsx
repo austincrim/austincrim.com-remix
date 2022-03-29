@@ -20,27 +20,12 @@ export let headers: HeadersFunction = () => {
 export default function Index() {
   return (
     <>
-      <div className="grid w-full h-full place-content-center">
-        <header className="px-8 py-16 mx-8 text-center border-4 border-gray-800 rounded-sm bg-gray-50 shadow-theme lg:text-left">
-          <h1 className="text-5xl font-bold text-indigo-800 lg:text-6xl font-theme">
-            Hello World! I'm&nbsp;Austin.
-          </h1>
-          <p className="mt-4 text-3xl text-gray-800">
-            I create things&nbsp;
-            <Link
-              className="text-indigo-900 underline hover:text-indigo-700"
-              to="/projects"
-            >
-              for
-            </Link>
-            &nbsp;and&nbsp;
-            <Link
-              className="text-indigo-900 underline hover:text-indigo-700"
-              to="/content"
-            >
-              about
-            </Link>
-            &nbsp;the web.
+      <div className="w-full h-full p-8">
+        <header className="max-w-4xl px-8 py-16 mx-auto border-4 border-gray-800 rounded-sm bg-gray-50 shadow-theme">
+          <h1 className="heading-primary">Hello World! I'm&nbsp;Austin.</h1>
+          <p className="mt-6 text-3xl text-center text-gray-800">
+            I create things <Link to="/projects">for</Link> and{' '}
+            <Link to="/content">about</Link> the web.
           </p>
         </header>
         <main></main>
