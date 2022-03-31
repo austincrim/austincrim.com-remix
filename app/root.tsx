@@ -1,4 +1,4 @@
-import type { LinksFunction } from 'remix'
+import { LinksFunction, Scripts } from 'remix'
 import { Links, LiveReload, Meta, Outlet } from 'remix'
 
 import stylesUrl from './styles/tailwind.css'
@@ -19,6 +19,7 @@ export default function App() {
       </head>
       <body className="h-full max-w-full">
         <Outlet />
+        <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>

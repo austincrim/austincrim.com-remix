@@ -1,4 +1,10 @@
-import { type MetaFunction, Link } from 'remix'
+import {
+  type MetaFunction,
+  Link,
+  LoaderFunction,
+  useLoaderData,
+  json
+} from 'remix'
 
 export let meta: MetaFunction = () => {
   return {
@@ -11,7 +17,14 @@ export let meta: MetaFunction = () => {
   }
 }
 
+export let loader: LoaderFunction = async ({ context }) => {
+  let posts = await context.DATA.list()
+  return json(posts)
+}
+
 export default function Index() {
+  let posts = useLoaderData()
+  console.log(posts)
   return (
     <>
       <div className="w-full h-full pt-20">
