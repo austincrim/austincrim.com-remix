@@ -28,7 +28,7 @@ export let loader: LoaderFunction = async () => {
 
 export let headers: HeadersFunction = () => {
   return {
-    'cache-control': `smax-age=${60 * 60 * 3}`
+    'cache-control': `s-maxage=${60 * 60 * 3}`
   }
 }
 
