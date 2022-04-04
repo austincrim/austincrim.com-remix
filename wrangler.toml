@@ -1,0 +1,21 @@
+compatibility_date = "2022-04-01"
+name = "austincrim-dot-com"
+type = "javascript"
+
+account_id = ""
+kv_namespaces = [
+  {binding = "DATA", id = "b6357214ba6b43aab80f546d8ee68574"},
+]
+route = ""
+workers_dev = true
+zone_id = ""
+
+[site]
+bucket = "./public"
+entry-point = "."
+
+[build]
+command = "npm run build"
+
+[build.upload]
+format = "service-worker"

@@ -1,11 +1,16 @@
 import PostPreview from '../components/PostPreview'
 import Layout from '../components/Layout'
-import { getPosts } from '../lib/posts.server'
-import { LoaderFunction, useLoaderData, json, MetaFunction, HeadersFunction } from 'remix'
-import { Post } from '@prisma/client'
+import { getPosts } from '../lib/posts'
+import {
+  LoaderFunction,
+  useLoaderData,
+  json,
+  MetaFunction,
+  HeadersFunction
+} from 'remix'
 
 export let loader: LoaderFunction = async () => {
-  const posts = await getPosts({ orderBy: { dateWritten: 'desc' } })
+  const posts = await getPosts()
 
   return json(posts)
 }
@@ -26,7 +31,7 @@ export let headers: HeadersFunction = () => {
 }
 
 export default function Blog() {
-  const posts = useLoaderData<Post[]>()
+  const posts = useLoaderData() as Post[]
   return (
     <Layout>
       <div className="flex flex-col max-w-5xl mx-auto my-20 space-y-12 dark:text-gray-50 md:rounded-lg">

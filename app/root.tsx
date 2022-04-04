@@ -39,11 +39,6 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <Meta />
         <Links />
         <script src="/theme.js" />
-        <script
-          src="https://cdn.usefathom.com/script.js"
-          data-site="QBFTQGKQ"
-          defer
-        ></script>
       </head>
       <body className="text-base transition-colors duration-300 bg-base">
         <Layout>

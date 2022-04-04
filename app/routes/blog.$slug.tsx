@@ -1,4 +1,3 @@
-import { Post } from '@prisma/client'
 import {
   json,
   LoaderFunction,
@@ -9,7 +8,7 @@ import {
 } from 'remix'
 import { getMDXComponent } from 'mdx-bundler/client'
 import Layout from '../components/Layout'
-import { getPostBySlug } from '../lib/posts.server'
+import { getPostBySlug } from '../lib/posts'
 
 import stylesUrl from '../styles/post.css'
 
@@ -32,7 +31,7 @@ export let headers: HeadersFunction = () => {
   }
 }
 
-export let meta: MetaFunction = ({ data }: { data: Post }) => {
+export let meta: MetaFunction = ({ data }: { data }) => {
   return {
     title: `Austin Crim | ${data.title}`,
     'og:title': `Austin Crim | ${data.title}`,
@@ -43,8 +42,7 @@ export let meta: MetaFunction = ({ data }: { data: Post }) => {
 }
 
 export default function Post() {
-  let post = useLoaderData<Post & { mdxBundle: { code: string } }>()
-  let Component = getMDXComponent(post.mdxBundle.code)
+  let post = useLoaderData()
 
   return (
     <Layout>
@@ -61,9 +59,10 @@ export default function Post() {
           </span>
         </div>
         <div className="max-w-4xl">
-          <div className="mt-8 leading-loose prose prose-theme max-w-none article">
-            <Component />
-          </div>
+          <div
+            className="mt-8 leading-loose prose prose-theme max-w-none article"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          ></div>
         </div>
       </article>
     </Layout>

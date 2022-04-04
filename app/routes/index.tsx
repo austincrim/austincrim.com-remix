@@ -1,4 +1,3 @@
-import type { Appearance as TAppearance, Post, Project } from '@prisma/client'
 import type { LoaderFunction, MetaFunction, HeadersFunction } from 'remix'
 import { json, useLoaderData, Link } from 'remix'
 import Appearance from '~/components/Appearance'
@@ -9,9 +8,7 @@ import Layout from '~/components/Layout'
 import PostPreview from '~/components/PostPreview'
 import ProjectCard from '~/components/ProjectCard'
 import Section from '~/components/Section'
-import { getAppearances } from '~/lib/appearances'
-import { getPosts } from '~/lib/posts.server'
-import { getProjects } from '~/lib/projects'
+import { getPosts } from '~/lib/posts'
 
 export let meta: MetaFunction = () => {
   return {
@@ -25,13 +22,8 @@ export let meta: MetaFunction = () => {
 }
 
 export let loader: LoaderFunction = async () => {
-  const [posts, projects, appearances] = await Promise.all([
-    getPosts({ take: 3, orderBy: { hits: 'desc' } }),
-    getProjects(),
-    getAppearances()
-  ])
-
-  return json({ posts, projects, appearances })
+  let posts = await getPosts()
+  return json(posts.slice(0, 3))
 }
 
 export let headers: HeadersFunction = () => {
@@ -41,18 +33,13 @@ export let headers: HeadersFunction = () => {
 }
 
 export default function Index() {
-  let { posts, projects, appearances } = useLoaderData<{
-    posts: Post[]
-    projects: Project[]
-    appearances: TAppearance[]
-  }>()
-
+  let posts = useLoaderData()
   return (
     <>
       <Layout>
         <main>
           <Hero />
-          <Section title="Places I Have Appeared" id="appearances">
+          {/* <Section title="Places I Have Appeared" id="appearances">
             <ul className="flex flex-col gap-20 py-8">
               {appearances.map((appearance) => (
                 <li key={appearance.title}>
@@ -60,7 +47,7 @@ export default function Index() {
                 </li>
               ))}
             </ul>
-          </Section>
+          </Section> */}
           <Section title="Things I Have Written" id="blog">
             <div className="flex flex-col gap-10 py-8">
               <ul className="flex flex-col gap-20 ">
@@ -81,7 +68,7 @@ export default function Index() {
               </Link>
             </div>
           </Section>
-          <Section title="Things I Have Built" id="portfolio">
+          {/* <Section title="Things I Have Built" id="portfolio">
             <ul className="flex flex-col gap-10">
               {projects.map((project) => (
                 <li key={project.title}>
@@ -89,7 +76,7 @@ export default function Index() {
                 </li>
               ))}
             </ul>
-          </Section>
+          </Section> */}
         </main>
 
         <Footer>
