@@ -1,3 +1,6 @@
+import { marked } from 'marked'
+import hl from 'highlight.js'
+
 export async function getAllPostMetadata(): Promise<PostMetadata[]> {
   let { keys } = await DATA.list()
   let posts = keys.map((key) => ({ slug: key.name, ...key.metadata }))
@@ -9,23 +12,16 @@ export async function getAllPostMetadata(): Promise<PostMetadata[]> {
 }
 
 export async function getPostBySlug(slug: string) {
-  // const highlight = await import('rehype-highlight')
-
   const { value, metadata } = await DATA.getWithMetadata(slug, 'json')
 
   if (!value || !metadata) {
     throw new Error('post not found!')
   }
 
-  let res = await fetch('https://api.github.com/markdown', {
-    body: JSON.stringify({ text: value.content }),
-    method: 'POST',
-    headers: {
-      accept: 'application/vnd.github.v3+json',
-      'user-agent': 'austincrim.com'
-    }
+  marked.setOptions({
+    highlight: (code, lang) => hl.highlight(code, { language: lang }).value
   })
-  let html = await res.text()
+  let html = marked.parse(value.content)
 
   return {
     ...metadata,
