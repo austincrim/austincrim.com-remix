@@ -1,4 +1,4 @@
-import type { LinksFunction } from 'remix'
+import { LinksFunction, Scripts } from 'remix'
 import { Links, LiveReload, Meta, Outlet } from 'remix'
 import Layout from './components/Layout'
 
@@ -20,6 +20,7 @@ export default function App() {
       </head>
       <body className="text-base transition-colors duration-300 bg-base">
         <Outlet />
+        <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>

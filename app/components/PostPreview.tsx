@@ -3,7 +3,7 @@ import { RightArrow } from './Icons'
 
 export default function PostPreview({ post }) {
   return (
-    <Link className="group" to={`/blog/${post.slug}`}>
+    <Link prefetch="intent" className="group" to={`/blog/${post.slug}`}>
       <article className="relative flex items-center transition-transform sm:group-hover:-translate-x-2">
         <div className="flex flex-col flex-grow py-8 space-y-1 text-base rounded sm:px-8 sm:shadow-md sm:bg-off-base">
           <div className="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline">
