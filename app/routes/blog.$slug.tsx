@@ -6,7 +6,6 @@ import {
   MetaFunction,
   HeadersFunction
 } from 'remix'
-import { getMDXComponent } from 'mdx-bundler/client'
 import Layout from '../components/Layout'
 import { getPostBySlug } from '../lib/posts'
 
@@ -20,7 +19,7 @@ export let loader: LoaderFunction = async ({ params }) => {
   let post = await getPostBySlug(params.slug!)
   return json(post, {
     headers: {
-      'Cache-Control': 'max-age=0, s-maxage=300, stale-while-revalidate=300'
+      'Cache-Control': 'max-age=300,s-maxage=900,stale-while-revalidate=900'
     }
   })
 }
