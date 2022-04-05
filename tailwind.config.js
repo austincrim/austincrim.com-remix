@@ -6,7 +6,9 @@ function withOpacity(variableName) {
     return `rgb(var(${variableName}))`
   }
 }
-
+/**
+ * @type {import('tailwindcss/tailwind-config').TailwindConfig}
+ */
 module.exports = {
   content: ['./app/**/*.tsx'],
   variants: {},
@@ -25,6 +27,9 @@ module.exports = {
         'muted-hover': withOpacity('--color-text-muted-hover'),
         primary: withOpacity('--color-primary'),
         secondary: withOpacity('--color-secondary')
+      },
+      borderColor: {
+        primary: 'rgb(var(--color-primary))'
       },
       typography: (theme) => ({
         theme: {

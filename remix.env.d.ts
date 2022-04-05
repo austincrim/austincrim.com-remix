@@ -9,4 +9,5 @@ type Post = {
   lede: string
   dateWritten: string
   content: string
+  slug: string
 }

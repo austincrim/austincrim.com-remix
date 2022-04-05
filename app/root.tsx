@@ -17,7 +17,6 @@ export default function App() {
         <link rel="icon" href="/favicon.ico" type="image/png" />
         <Meta />
         <Links />
-        <script src="/theme.js" />
       </head>
       <body className="text-base transition-colors duration-300 bg-base">
         <Outlet />
@@ -38,7 +37,6 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <link rel="icon" href="/favicon.ico" type="image/png" />
         <Meta />
         <Links />
-        <script src="/theme.js" />
       </head>
       <body className="text-base transition-colors duration-300 bg-base">
         <Layout>
