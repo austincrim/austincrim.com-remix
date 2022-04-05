@@ -1,6 +1,6 @@
-import { LinksFunction, Scripts } from 'remix'
+import { LinksFunction, Scripts, ScrollRestoration } from 'remix'
 import { Links, LiveReload, Meta, Outlet } from 'remix'
-import Layout from './components/Layout'
+import Nav from './components/Nav'
 
 import stylesUrl from './styles/tailwind.css'
 
@@ -18,8 +18,12 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="text-base transition-colors duration-300 bg-base">
-        <Outlet />
+      <body className="text-base bg-base">
+        <Nav />
+        <div className="px-10 mx-auto lg:max-w-5xl md:max-w-3xl">
+          <Outlet />
+        </div>
+        <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
@@ -39,8 +43,9 @@ export function ErrorBoundary({ error }: { error: Error }) {
         <Meta />
         <Links />
       </head>
-      <body className="text-base transition-colors duration-300 bg-base">
-        <Layout>
+      <body className="text-base bg-base">
+        <Nav />
+        <main className="px-10 mx-auto lg:max-w-5xl md:max-w-3xl">
           <div className="flex flex-col items-center gap-10">
             <p className="text-xl font-bold">
               Yikes! This wasn't supposed to happen 🤔.
@@ -49,7 +54,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
               {error.message}
             </pre>
           </div>
-        </Layout>
+        </main>
       </body>
     </html>
   )
