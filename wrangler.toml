@@ -4,7 +4,7 @@ type = "javascript"
 
 account_id = ""
 kv_namespaces = [
-  {binding = "DATA", id = "b6357214ba6b43aab80f546d8ee68574"},
+  {binding = "DATA", id = "b6357214ba6b43aab80f546d8ee68574", preview_id = "b6357214ba6b43aab80f546d8ee68574"},
 ]
 route = ""
 workers_dev = true

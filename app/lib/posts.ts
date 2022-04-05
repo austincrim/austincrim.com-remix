@@ -1,12 +1,10 @@
 export async function getAllPostMetadata(): Promise<PostMetadata[]> {
   let { keys } = await DATA.list()
   let posts = keys.map((key) => ({ slug: key.name, ...key.metadata }))
-
   posts.sort(
     (a, b) =>
       new Date(b.dateWritten).getTime() - new Date(a.dateWritten).getTime()
   )
-
   return posts
 }
 
