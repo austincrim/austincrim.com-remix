@@ -1,10 +1,6 @@
-export async function getPosts(): Promise<Post[]> {
+export async function getAllPostMetadata(): Promise<PostMetadata[]> {
   let { keys } = await DATA.list()
-  let postValues = await Promise.allSettled(
-    keys.map((slug) => DATA.get(slug.name, 'json'))
-  )
-
-  let posts = postValues.map((p, i) => ({ ...p.value, slug: keys[i].name }))
+  let posts = keys.map((key) => ({ slug: key.name, ...key.metadata }))
 
   posts.sort(
     (a, b) =>
@@ -17,14 +13,14 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string) {
   // const highlight = await import('rehype-highlight')
 
-  const post = await DATA.get<Post>(slug, 'json')
+  const { value, metadata } = await DATA.getWithMetadata(slug, 'json')
 
-  if (!post) {
+  if (!value || !metadata) {
     throw new Error('post not found!')
   }
 
   let res = await fetch('https://api.github.com/markdown', {
-    body: JSON.stringify({ text: post.content }),
+    body: JSON.stringify({ text: value.content }),
     method: 'POST',
     headers: {
       accept: 'application/vnd.github.v3+json',
@@ -34,7 +30,7 @@ export async function getPostBySlug(slug: string) {
   let html = await res.text()
 
   return {
-    ...post,
+    ...metadata,
     html,
     slug
   }

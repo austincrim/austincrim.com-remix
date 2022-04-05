@@ -23,8 +23,6 @@ export default function App() {
         <div className="px-10 mx-auto lg:max-w-5xl md:max-w-3xl">
           <Outlet />
         </div>
-        <ScrollRestoration />
-        <Scripts />
         {process.env.NODE_ENV === 'development' && <LiveReload />}
       </body>
     </html>

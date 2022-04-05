@@ -4,10 +4,8 @@
 
 declare var DATA: KVNamespace
 
-type Post = {
+type PostMetadata = {
   title: string
   lede: string
   dateWritten: string
-  content: string
-  slug: string
 }

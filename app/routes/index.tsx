@@ -7,7 +7,7 @@ import { RightArrow } from '~/components/Icons'
 import PostPreview from '~/components/PostPreview'
 import ProjectCard from '~/components/ProjectCard'
 import Section from '~/components/Section'
-import { getPosts } from '~/lib/posts'
+import { getAllPostMetadata } from '~/lib/posts'
 
 export let meta: MetaFunction = () => {
   return {
@@ -21,13 +21,13 @@ export let meta: MetaFunction = () => {
 }
 
 export let loader: LoaderFunction = async () => {
-  let posts = await getPosts()
+  let posts = await getAllPostMetadata()
   return json(posts.slice(0, 3))
 }
 
 export let headers: HeadersFunction = () => {
   return {
-    'cache-control': `s-maxage=${60 * 60 * 3}`
+    'cache-control': `max-age=300`
   }
 }
 
