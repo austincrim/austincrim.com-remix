@@ -1,11 +1,9 @@
-import type { LoaderFunction, MetaFunction, HeadersFunction } from 'remix'
-import { json, useLoaderData, Link } from 'remix'
-import Appearance from '~/components/Appearance'
+import type { HeadersFunction, LoaderFunction, MetaFunction } from 'remix'
+import { json, Link, useLoaderData } from 'remix'
 import Footer from '~/components/Footer'
 import Hero from '~/components/Hero'
 import { RightArrow } from '~/components/Icons'
 import PostPreview from '~/components/PostPreview'
-import ProjectCard from '~/components/ProjectCard'
 import Section from '~/components/Section'
 import { getAllPostMetadata } from '~/lib/posts'
 
@@ -46,7 +44,7 @@ export default function Index() {
               ))}
             </ul>
           </Section> */}
-        <Section title="Things I Have Written" id="blog">
+        <Section title="What I'm Up To">
           <div className="flex flex-col gap-10 py-8">
             <ul className="flex flex-col gap-20 ">
               {posts.map((post) => (
