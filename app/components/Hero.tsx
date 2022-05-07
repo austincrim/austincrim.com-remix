@@ -17,16 +17,6 @@ export default function Hero() {
       <div className="flex flex-col items-start justify-center space-y-4">
         <a
           className="text-lg font-semibold transition-colors text-primary hover:text-secondary group"
-          href="/Austin Crim Resume.pdf"
-          download
-        >
-          <span className="mr-1">Download Resume</span>
-          <span className="inline-block align-middle transition-transform transform group-hover:translate-x-1">
-            <RightArrow />
-          </span>
-        </a>
-        <a
-          className="text-lg font-semibold transition-colors text-primary hover:text-secondary group"
           href="mailto:aust.crim@gmail.com"
         >
           <span className="mr-1">Say Hi</span>
