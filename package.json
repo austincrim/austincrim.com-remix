@@ -5,10 +5,8 @@
   "license": "",
   "main": "build/index.js",
   "scripts": {
-    "prebuild": "npm run clean",
     "build": "npm run build:css && remix build",
     "build:css": "NODE_ENV=production tailwindcss -i app/styles/in.css -o app/styles/tailwind.css --minify",
-    "clean": "rm -rf .cache build public/build",
     "deploy": "npm run build && wrangler publish",
     "dev": "remix build && run-p dev:*",
     "dev:miniflare": "cross-env NODE_ENV=development miniflare ./build/index.js --watch -k DATA --kv-persist -e .env",
@@ -19,8 +17,8 @@
   },
   "dependencies": {
     "@notionhq/client": "^1.0.4",
-    "@remix-run/cloudflare-workers": "^1.3.4",
-    "@remix-run/react": "^1.3.4",
+    "@remix-run/cloudflare-workers": "^1.5.1",
+    "@remix-run/react": "^1.5.1",
     "cross-env": "^7.0.3",
     "highlight.js": "^11.5.0",
     "marked": "^4.0.12",
