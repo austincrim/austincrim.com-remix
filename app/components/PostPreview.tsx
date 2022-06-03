@@ -12,7 +12,7 @@ export default function PostPreview({ post }) {
             </h3>
             <div className="flex flex-col md:items-end md:pl-2">
               <span className="text-muted">
-                {new Date(post.dateWritten).toLocaleDateString()}
+                {new Date(post.datePublished).toLocaleDateString()}
               </span>
             </div>
           </div>

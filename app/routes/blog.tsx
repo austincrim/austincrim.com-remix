@@ -1,5 +1,4 @@
 import PostPreview from '../components/PostPreview'
-import { getAllPostMetadata } from '../lib/posts'
 import {
   LoaderFunction,
   useLoaderData,
@@ -7,9 +6,10 @@ import {
   MetaFunction,
   HeadersFunction
 } from 'remix'
+import { getAllPostProperties } from '~/lib/notion'
 
 export let loader: LoaderFunction = async () => {
-  const posts = await getAllPostMetadata()
+  let posts = await getAllPostProperties()
 
   return json(posts)
 }
@@ -25,7 +25,7 @@ export let meta: MetaFunction = () => {
 
 export let headers: HeadersFunction = () => {
   return {
-    'cache-control': `smax-age=${60 * 30}`
+    'cache-control': `s-maxage=${60 * 30}`
   }
 }
 

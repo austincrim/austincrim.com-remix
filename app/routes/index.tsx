@@ -6,6 +6,7 @@ import { RightArrow } from '~/components/Icons'
 import PostPreview from '~/components/PostPreview'
 import Section from '~/components/Section'
 import { getAllPostMetadata } from '~/lib/posts'
+import { getAllPostProperties, type PostProperties } from '~/lib/notion'
 
 export let meta: MetaFunction = () => {
   return {
@@ -19,7 +20,7 @@ export let meta: MetaFunction = () => {
 }
 
 export let loader: LoaderFunction = async () => {
-  let posts = await getAllPostMetadata()
+  let posts = await getAllPostProperties()
   return json(posts.slice(0, 3))
 }
 
@@ -30,7 +31,7 @@ export let headers: HeadersFunction = () => {
 }
 
 export default function Index() {
-  let posts = useLoaderData()
+  let posts: PostProperties[] = useLoaderData()
   return (
     <>
       <main>

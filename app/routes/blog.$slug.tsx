@@ -6,6 +6,7 @@ import {
   MetaFunction,
   HeadersFunction
 } from 'remix'
+import { getPostProperties } from '~/lib/notion'
 import { getPostBySlug } from '../lib/posts'
 
 import stylesUrl from '../styles/post.css'
@@ -15,7 +16,7 @@ export let links: LinksFunction = () => {
 }
 
 export let loader: LoaderFunction = async ({ params }) => {
-  let post = await getPostBySlug(params.slug!)
+  let post = await getPostProperties(params.slug!)
   return json(post)
 }
 
@@ -48,7 +49,7 @@ export default function Post() {
         </h1>
         <span className="text-lg">{post.lede}</span>
         <span className="text-muted">
-          {new Date(post.dateWritten).toLocaleDateString()}
+          {new Date(post.datePublished).toLocaleDateString('en-US')}
         </span>
       </div>
       <div className="max-w-4xl">

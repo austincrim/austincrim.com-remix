@@ -19,13 +19,21 @@ export async function getPostBySlug(slug: string) {
   }
 
   marked.setOptions({
-    highlight: (code, lang) => hl.highlight(code, { language: lang }).value
+    highlight: (code, lang) => {
+      try {
+        return hl.highlight(code, { language: lang, ignoreIllegals: true })
+          .value
+      } catch (e) {
+        return code
+      }
+    }
   })
   let html = marked.parse(value.content)
 
   return {
     ...metadata,
     html,
+    md: value.content,
     slug
   }
 }
