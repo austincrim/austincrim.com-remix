@@ -1,7 +1,7 @@
-import { LoaderFunction, useLoaderData } from 'remix'
+import { useLoaderData } from '@remix-run/react'
 import { getPostBySlug } from '~/lib/posts'
 
-export let loader: LoaderFunction = async ({ params }) => {
+export let loader = async ({ params }) => {
   let post = await getPostBySlug(params.slug as string)
 
   return post.title

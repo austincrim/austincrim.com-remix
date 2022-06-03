@@ -1,4 +1,4 @@
-import { NavLink } from 'remix'
+import { NavLink } from '@remix-run/react'
 import { GitHubLogo, TwitterLogo, YoutubeLogo } from './Icons'
 
 export default function Nav() {

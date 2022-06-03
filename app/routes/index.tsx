@@ -1,5 +1,5 @@
-import type { HeadersFunction, LoaderFunction, MetaFunction } from 'remix'
-import { json, Link, useLoaderData } from 'remix'
+import { Link, useLoaderData } from '@remix-run/react'
+import { json } from '@remix-run/cloudflare'
 import Footer from '~/components/Footer'
 import Hero from '~/components/Hero'
 import { RightArrow } from '~/components/Icons'
@@ -8,7 +8,7 @@ import Section from '~/components/Section'
 import { getAllPostMetadata } from '~/lib/posts'
 import { getAllPostProperties, type PostProperties } from '~/lib/notion'
 
-export let meta: MetaFunction = () => {
+export let meta = () => {
   return {
     title: 'Austin Crim | building for the web',
     description: 'The personal website of Austin Crim, a builder for the web',
@@ -19,12 +19,12 @@ export let meta: MetaFunction = () => {
   }
 }
 
-export let loader: LoaderFunction = async () => {
+export let loader = async () => {
   let posts = await getAllPostProperties()
   return json(posts.slice(0, 3))
 }
 
-export let headers: HeadersFunction = () => {
+export let headers = () => {
   return {
     'cache-control': `max-age=300`
   }

@@ -1,20 +1,15 @@
 import PostPreview from '../components/PostPreview'
-import {
-  LoaderFunction,
-  useLoaderData,
-  json,
-  MetaFunction,
-  HeadersFunction
-} from 'remix'
+import { useLoaderData } from '@remix-run/react'
+import { json } from '@remix-run/cloudflare'
 import { getAllPostProperties } from '~/lib/notion'
 
-export let loader: LoaderFunction = async () => {
+export let loader = async () => {
   let posts = await getAllPostProperties()
 
   return json(posts)
 }
 
-export let meta: MetaFunction = () => {
+export let meta = () => {
   return {
     title: 'Austin Crim | blogging about the web',
     'og:title': 'Austin Crim | blogging about the web',
@@ -23,7 +18,7 @@ export let meta: MetaFunction = () => {
   }
 }
 
-export let headers: HeadersFunction = () => {
+export let headers = () => {
   return {
     'cache-control': `s-maxage=${60 * 30}`
   }

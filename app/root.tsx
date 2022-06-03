@@ -1,5 +1,5 @@
-import { LinksFunction, Scripts, ScrollRestoration } from 'remix'
-import { Links, LiveReload, Meta, Outlet } from 'remix'
+import { Links, LiveReload, Meta, Outlet } from '@remix-run/react'
+import { LinksFunction } from '@remix-run/react/routeModules'
 import Nav from './components/Nav'
 
 import stylesUrl from './styles/tailwind.css'

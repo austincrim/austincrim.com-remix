@@ -1,32 +1,25 @@
-import {
-  json,
-  LoaderFunction,
-  useLoaderData,
-  LinksFunction,
-  MetaFunction,
-  HeadersFunction
-} from 'remix'
+import { useLoaderData } from '@remix-run/react'
+import { json } from '@remix-run/cloudflare'
 import { getPostProperties } from '~/lib/notion'
-import { getPostBySlug } from '../lib/posts'
 
 import stylesUrl from '../styles/post.css'
 
-export let links: LinksFunction = () => {
+export let links = () => {
   return [{ rel: 'stylesheet', href: stylesUrl }]
 }
 
-export let loader: LoaderFunction = async ({ params }) => {
+export let loader = async ({ params }) => {
   let post = await getPostProperties(params.slug!)
   return json(post)
 }
 
-export let headers: HeadersFunction = () => {
+export let headers = () => {
   return {
     'Cache-Control': 'max-age=300, s-maxage=900, stale-while-revalidate=900'
   }
 }
 
-export let meta: MetaFunction = ({ data }: { data }) => {
+export let meta = ({ data }: { data }) => {
   return {
     title: `Austin Crim | ${data.title}`,
     'og:title': `Austin Crim | ${data.title}`,

@@ -1,4 +1,4 @@
-import { Link } from 'remix'
+import { Link } from '@remix-run/react'
 import { RightArrow } from './Icons'
 
 export default function PostPreview({ post }) {
