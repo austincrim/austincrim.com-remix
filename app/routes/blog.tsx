@@ -20,7 +20,7 @@ export let meta = () => {
 
 export let headers = () => {
   return {
-    'cache-control': `s-maxage=${60 * 30}`
+    'cache-control': `max-age=600, s-maxage=900, stale-while-revalidate=900`
   }
 }
 

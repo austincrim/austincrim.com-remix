@@ -26,7 +26,7 @@ export let loader = async () => {
 
 export let headers = () => {
   return {
-    'cache-control': `max-age=300`
+    'Cache-Control': 'max-age=600, s-maxage=1200'
   }
 }
 
