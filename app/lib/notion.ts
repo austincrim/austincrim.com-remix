@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Client } from '@notionhq/client'
+import { Client, LogLevel } from '@notionhq/client'
 import type { QueryDatabaseResponse } from '@notionhq/client/build/src/api-endpoints'
 import { NotionToMarkdown } from 'notion-to-md'
 import { marked } from 'marked'
@@ -15,7 +15,8 @@ export type PostProperties = {
 
 let notion = new Client({
   auth: NOTION_TOKEN,
-  fetch
+  fetch,
+  logLevel: LogLevel.DEBUG
 })
 let n2m = new NotionToMarkdown({ notionClient: notion })
 
